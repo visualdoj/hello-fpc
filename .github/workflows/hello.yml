@@ -12,7 +12,7 @@ jobs:
       matrix: 
         host: [windows-latest, ubuntu-latest, macos-latest]
         cpu:  ''
-        os:   ''
+        os: ''
         include:
             - { host: 'ubuntu-latest',  cross: 'i386-linux',     cpu: 'i386',   'os': 'linux' }
             - { host: 'ubuntu-latest',  cross: 'x86_64-win64',   cpu: 'x86_64', 'os': 'win64' }
