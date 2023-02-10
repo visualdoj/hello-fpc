@@ -14,13 +14,13 @@ jobs:
         target_cpu: ''
         target_os: ''
         include:
-            - { host: 'ubuntu-latest',  cross: 'i386-linux',     target_cpu: 'i386',   'target_os': 'linux' }
-            - { host: 'ubuntu-latest',  cross: 'x86_64-win64',   target_cpu: 'x86_64', 'target_os': 'win64' }
-            - { host: 'ubuntu-latest',  cross: 'arm-linux',      target_cpu: 'arm',    'target_os': 'linux' }
-            - { host: 'windows-latest', cross: 'i386-linux',     target_cpu: 'i386',   'target_os': 'linux' }
-            - { host: 'windows-latest', cross: 'x86_64-win64',   target_cpu: 'x86_64', 'target_os': 'win64' }
-            - { host: 'windows-latest', cross: 'i8086-embedded', target_cpu: 'i8086',  'target_os': 'embedded' }
-            - { host: 'windows-latest', cross: 'arm-linux',      target_cpu: 'arm',    'target_os': 'linux' }
+            - {host: 'ubuntu-latest',  cross: 'i386-linux',     target_cpu: i386,   target_os: linux}
+            - {host: 'ubuntu-latest',  cross: 'x86_64-win64',   target_cpu: x86_64, target_os: win64}
+            - {host: 'ubuntu-latest',  cross: 'arm-linux',      target_cpu: arm,    target_os: linux}
+            - {host: 'windows-latest', cross: 'i386-linux',     target_cpu: i386,   target_os: linux}
+            - {host: 'windows-latest', cross: 'x86_64-win64',   target_cpu: x86_64, target_os: win64}
+            - {host: 'windows-latest', cross: 'i8086-embedded', target_cpu: i8086,  target_os: embedded}
+            - {host: 'windows-latest', cross: 'arm-linux',      target_cpu: arm,    target_os: linux}
 
     steps:
       - name: Check out
