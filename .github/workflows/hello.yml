@@ -11,16 +11,16 @@ jobs:
     strategy:
       matrix: 
         host: [windows-latest, ubuntu-latest, macos-latest]
-        target_cpu: ""
-        target_os: ""
+        cpu: ['']
+        os: ['']
         include:
-            - {host: 'ubuntu-latest',  cross: 'i386-linux',     target_cpu: i386,   target_os: linux}
-            - {host: 'ubuntu-latest',  cross: 'x86_64-win64',   target_cpu: x86_64, target_os: win64}
-            - {host: 'ubuntu-latest',  cross: 'arm-linux',      target_cpu: arm,    target_os: linux}
-            - {host: 'windows-latest', cross: 'i386-linux',     target_cpu: i386,   target_os: linux}
-            - {host: 'windows-latest', cross: 'x86_64-win64',   target_cpu: x86_64, target_os: win64}
-            - {host: 'windows-latest', cross: 'i8086-embedded', target_cpu: i8086,  target_os: embedded}
-            - {host: 'windows-latest', cross: 'arm-linux',      target_cpu: arm,    target_os: linux}
+            - {host: 'ubuntu-latest',  cross: 'i386-linux',     cpu: i386,   os: linux}
+            - {host: 'ubuntu-latest',  cross: 'x86_64-win64',   cpu: x86_64, os: win64}
+            - {host: 'ubuntu-latest',  cross: 'arm-linux',      cpu: arm,    os: linux}
+            - {host: 'windows-latest', cross: 'i386-linux',     cpu: i386,   os: linux}
+            - {host: 'windows-latest', cross: 'x86_64-win64',   cpu: x86_64, os: win64}
+            - {host: 'windows-latest', cross: 'i8086-embedded', cpu: i8086,  os: embedded}
+            - {host: 'windows-latest', cross: 'arm-linux',      cpu: arm,    os: linux}
 
     steps:
       - name: Check out
@@ -29,7 +29,7 @@ jobs:
       - name: Setup FPC
         uses: visualdoj/setup-fpc@v0.2.0-beta
         with:
-            cross: "${{ matrix.target_cpu }}${{ (matrix.target_cpu != '' || matrix.target_os != '') && '-' || '' }}${{ matrix.target_os }}"
+            cross: "${{ matrix.cpu }}${{ (matrix.cpu != '' || matrix.os != '') && '-' || '' }}${{ matrix.os }}"
 
       - name: Print FPC version
         run: fpc -i
@@ -44,4 +44,4 @@ jobs:
 
       - name: Compile to another platform
         if: matrix.cross != ''
-        run: fpc -P${{ matrix.target_cpu }} -T${{ matrix.target_os }} hello.pas
+        run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
