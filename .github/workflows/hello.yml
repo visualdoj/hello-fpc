@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix: 
         host: [windows-latest, ubuntu-latest, macos-latest]
-        cpu:  ''
+        cpu: ''
         target_os: ''
         include:
             - { host: 'ubuntu-latest',  cross: 'i386-linux',     cpu: 'i386',   'target_os': 'linux' }
