@@ -1,0 +1,47 @@
+name: "Hello!"
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  Example:
+    runs-on: ${{ matrix.host }}
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      matrix: 
+        host: [windows-latest, ubuntu-latest, macos-latest]
+        cpu:  ''
+        os:   ''
+        include:
+            - { host: 'ubuntu-latest',  cross: 'i386-linux',     cpu: 'i386',   'os': 'linux' }
+            - { host: 'ubuntu-latest',  cross: 'x86_64-win64',   cpu: 'x86_64', 'os': 'win64' }
+            - { host: 'ubuntu-latest',  cross: 'arm-linux',      cpu: 'arm',    'os': 'linux' }
+            - { host: 'windows-latest', cross: 'i386-linux',     cpu: 'i386',   'os': 'linux' }
+            - { host: 'windows-latest', cross: 'x86_64-win64',   cpu: 'x86_64', 'os': 'win64' }
+            - { host: 'windows-latest', cross: 'i8086-embedded', cpu: 'i8086',  'os': 'embedded' }
+            - { host: 'windows-latest', cross: 'arm-linux',      cpu: 'arm',    'os': 'linux' }
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Setup FPC
+        uses: visualdoj/setup-fpc@v0.2.0-beta
+        with:
+            cross: "${{ matrix.cpu }}${{ (matrix.cpu != '' || matrix.os != '') && '-' || '' }}${{ matrix.os }}"
+
+      - name: Print FPC version
+        run: fpc -i
+
+      - name: Compile
+        if: matrix.cross == ''
+        run: fpc hello.pas
+
+      - name: Test
+        if: matrix.cross == ''
+        run: "${{ github.workspace }}/hello"
+
+      - name: Compile to another platform
+        if: matrix.cross != ''
+        run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
