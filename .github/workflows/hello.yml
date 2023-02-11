@@ -21,14 +21,14 @@ jobs:
         cpu: ['']
         os: ['']
         include:
-        #    - {host: 'macos-latest',   cpu: aarch64, os: darwin}  Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
-        #    - {host: 'macos-latest',   cpu: aarch64, os: ios}     Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
-            - {host: 'macos-latest',   cpu: arm,     os: wince}
-            - {host: 'macos-latest',   cpu: i386,    os: embedded}
-            - {host: 'macos-latest',   cpu: i386,    os: nativent}
-            - {host: 'macos-latest',   cpu: i386,    os: win32}
-            - {host: 'macos-latest',   cpu: i386,    os: wince}
-            - {host: 'macos-latest',   cpu: i8086,   os: embedded}
+        #   - {host: 'macos-latest',   cpu: aarch64, os: darwin}   Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+        #   - {host: 'macos-latest',   cpu: aarch64, os: ios}      Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+        #   - {host: 'macos-latest',   cpu: arm,     os: wince}    Error: ppcarm can't be executed, error message: Failed to execute "ppcarm", error code: 127
+        #   - {host: 'macos-latest',   cpu: i386,    os: embedded} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+        #   - {host: 'macos-latest',   cpu: i386,    os: nativent} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+        #   - {host: 'macos-latest',   cpu: i386,    os: win32}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+        #   - {host: 'macos-latest',   cpu: i386,    os: wince}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+        #   - {host: 'macos-latest',   cpu: i8086,   os: embedded} Error: ppc8086 can't be executed, error message: Failed to execute "ppc8086", error code: 127
             - {host: 'macos-latest',   cpu: x86_64,  os: win64}
             - {host: 'ubuntu-latest',  cpu: i386,    os: linux}
             - {host: 'ubuntu-latest',  cpu: x86_64,  os: win64}
