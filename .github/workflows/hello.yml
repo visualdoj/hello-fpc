@@ -20,10 +20,10 @@ jobs:
         host: [windows-latest, ubuntu-latest, macos-latest]
         cpu: ['']
         os: ['']
-        #include:
-        #    - {host: 'ubuntu-latest',  cpu: i386,   os: linux}
-        #    - {host: 'ubuntu-latest',  cpu: x86_64, os: win64}
-        #    - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
+        include:
+            - {host: 'ubuntu-latest',  cpu: i386,   os: linux}
+            - {host: 'ubuntu-latest',  cpu: x86_64, os: win64}
+            - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
         #    - {host: 'windows-latest', cpu: i386,   os: linux}
         #    - {host: 'windows-latest', cpu: x86_64, os: win64}
         #    - {host: 'windows-latest', cpu: i8086,  os: embedded}
