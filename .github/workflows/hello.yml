@@ -21,22 +21,45 @@ jobs:
         cpu: ['']
         os: ['']
         include:
-        #   - {host: 'macos-latest',   cpu: aarch64, os: darwin}   Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
-        #   - {host: 'macos-latest',   cpu: aarch64, os: ios}      Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
-        #   - {host: 'macos-latest',   cpu: arm,     os: wince}    Error: ppcarm can't be executed, error message: Failed to execute "ppcarm", error code: 127
-        #   - {host: 'macos-latest',   cpu: i386,    os: embedded} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
-        #   - {host: 'macos-latest',   cpu: i386,    os: nativent} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
-        #   - {host: 'macos-latest',   cpu: i386,    os: win32}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
-        #   - {host: 'macos-latest',   cpu: i386,    os: wince}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
-        #   - {host: 'macos-latest',   cpu: i8086,   os: embedded} Error: ppc8086 can't be executed, error message: Failed to execute "ppc8086", error code: 127
+            # {host: 'macos-latest',   cpu: aarch64, os: darwin}   Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+            # {host: 'macos-latest',   cpu: aarch64, os: ios}      Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+            # {host: 'macos-latest',   cpu: arm,     os: wince}    Error: ppcarm can't be executed, error message: Failed to execute "ppcarm", error code: 127
+            # {host: 'macos-latest',   cpu: i386,    os: embedded} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+            # {host: 'macos-latest',   cpu: i386,    os: nativent} Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+            # {host: 'macos-latest',   cpu: i386,    os: win32}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+            # {host: 'macos-latest',   cpu: i386,    os: wince}    Error: ppc386 can't be executed, error message: Failed to execute "ppc386", error code: 127
+            # {host: 'macos-latest',   cpu: i8086,   os: embedded} Error: ppc8086 can't be executed, error message: Failed to execute "ppc8086", error code: 127
             - {host: 'macos-latest',   cpu: x86_64,  os: win64}
-            - {host: 'ubuntu-latest',  cpu: i386,    os: linux}
-            - {host: 'ubuntu-latest',  cpu: x86_64,  os: win64}
-        #    - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
-        #    - {host: 'windows-latest', cpu: i386,   os: linux}
-        #    - {host: 'windows-latest', cpu: x86_64, os: win64}
-        #    - {host: 'windows-latest', cpu: i8086,  os: embedded}
-        #    - {host: 'windows-latest', cpu: arm,    os: linux}
+            - {host: 'ubuntu-latest',  cpu: arm,      os: wince}
+            - {host: 'ubuntu-latest',  cpu: i386,     os: embedded}
+            - {host: 'ubuntu-latest',  cpu: i386,     os: linux}
+            - {host: 'ubuntu-latest',  cpu: i386,     os: nativent}
+            - {host: 'ubuntu-latest',  cpu: i386,     os: win32.tar}
+            - {host: 'ubuntu-latest',  cpu: i386,     os: wince.tar}
+            - {host: 'ubuntu-latest',  cpu: i8086,    os: embedded}
+            - {host: 'ubuntu-latest',  cpu: x86_64,   os: embedded}
+            - {host: 'ubuntu-latest',  cpu: x86_64,   os: win64}
+            - {host: 'windows-latest', cpu: aarch64,  os: linux}
+            - {host: 'windows-latest', cpu: arm,      os: linux}
+            - {host: 'windows-latest', cpu: arm,      os: wince}
+            - {host: 'windows-latest', cpu: avr,      os: embedded}
+            - {host: 'windows-latest', cpu: i386,     os: embedded}
+            - {host: 'windows-latest', cpu: i386,     os: freebsd}
+            - {host: 'windows-latest', cpu: i386,     os: go32v2}
+            - {host: 'windows-latest', cpu: i386,     os: linux}
+            - {host: 'windows-latest', cpu: i386,     os: nativent}
+            - {host: 'windows-latest', cpu: i386,     os: wince}
+            - {host: 'windows-latest', cpu: i8086,    os: embedded}
+            - {host: 'windows-latest', cpu: mips,     os: linux}
+            - {host: 'windows-latest', cpu: mipsel,   os: linux}
+            - {host: 'windows-latest', cpu: powerpc,  os: linux}
+            - {host: 'windows-latest', cpu: powerpc64,os: linux}
+            - {host: 'windows-latest', cpu: sparc,    os: linux}
+            - {host: 'windows-latest', cpu: sparc64,  os: linux}
+            - {host: 'windows-latest', cpu: x86_64,   os: embedded}
+            - {host: 'windows-latest', cpu: x86_64,   os: freebsd}
+            - {host: 'windows-latest', cpu: x86_64,   os: linux}
+            - {host: 'windows-latest', cpu: x86_64,   os: win64}
 
     steps:
       - name: Check out
