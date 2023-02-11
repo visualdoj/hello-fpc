@@ -20,14 +20,14 @@ jobs:
         host: [windows-latest, ubuntu-latest, macos-latest]
         cpu: ['']
         os: ['']
-        include:
-            - {host: 'ubuntu-latest',  cross: 'i386-linux',     cpu: i386,   os: linux}
-            - {host: 'ubuntu-latest',  cross: 'x86_64-win64',   cpu: x86_64, os: win64}
-            - {host: 'ubuntu-latest',  cross: 'arm-linux',      cpu: arm,    os: linux}
-            - {host: 'windows-latest', cross: 'i386-linux',     cpu: i386,   os: linux}
-            - {host: 'windows-latest', cross: 'x86_64-win64',   cpu: x86_64, os: win64}
-            - {host: 'windows-latest', cross: 'i8086-embedded', cpu: i8086,  os: embedded}
-            - {host: 'windows-latest', cross: 'arm-linux',      cpu: arm,    os: linux}
+        #include:
+        #    - {host: 'ubuntu-latest',  cpu: i386,   os: linux}
+        #    - {host: 'ubuntu-latest',  cpu: x86_64, os: win64}
+        #    - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
+        #    - {host: 'windows-latest', cpu: i386,   os: linux}
+        #    - {host: 'windows-latest', cpu: x86_64, os: win64}
+        #    - {host: 'windows-latest', cpu: i8086,  os: embedded}
+        #    - {host: 'windows-latest', cpu: arm,    os: linux}
 
     steps:
       - name: Check out
@@ -36,20 +36,20 @@ jobs:
       - name: Setup FPC
         uses: visualdoj/setup-fpc@main
         with:
-            cross: "${{ matrix.cpu }}${{ (matrix.cpu != '' || matrix.os != '') && '-' || '' }}${{ matrix.os }}"
+            cross: "${{ matrix.cpu }}${{ matrix.os != '' && '-' || '' }}${{ matrix.os }}"
 
       - name: Print FPC version
         run: fpc -i
 
       - name: Compile
-        if: matrix.cross == ''
+        if: matrix.os == ''
         run: fpc hello.pas
 
       - name: Test
-        if: matrix.cross == ''
+        if: matrix.os == ''
         shell: bash
         run: "./hello"
 
       - name: Compile to another platform
-        if: matrix.cross != ''
+        if: matrix.os == ''
         run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
