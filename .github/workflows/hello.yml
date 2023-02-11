@@ -21,8 +21,15 @@ jobs:
         cpu: ['']
         os: ['']
         include:
-            - {host: 'macos-latest',   cpu: aarch64, os: darwin}
-            - {host: 'macos-latest',   cpu: aarch64, os: ios}
+        #    - {host: 'macos-latest',   cpu: aarch64, os: darwin}  Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+        #    - {host: 'macos-latest',   cpu: aarch64, os: ios}     Error: ppca64 can't be executed, error message: Failed to execute "ppca64", error code: 127
+            - {host: 'macos-latest',   cpu: arm,     os: wince}
+            - {host: 'macos-latest',   cpu: i386,    os: embedded}
+            - {host: 'macos-latest',   cpu: i386,    os: nativent}
+            - {host: 'macos-latest',   cpu: i386,    os: win32}
+            - {host: 'macos-latest',   cpu: i386,    os: wince}
+            - {host: 'macos-latest',   cpu: i8086,   os: embedded}
+            - {host: 'macos-latest',   cpu: x86_64,  os: win64}
             - {host: 'ubuntu-latest',  cpu: i386,    os: linux}
             - {host: 'ubuntu-latest',  cpu: x86_64,  os: win64}
         #    - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
