@@ -21,8 +21,10 @@ jobs:
         cpu: ['']
         os: ['']
         include:
-            - {host: 'ubuntu-latest',  cpu: i386,   os: linux}
-            - {host: 'ubuntu-latest',  cpu: x86_64, os: win64}
+            - {host: 'macos-latest',   cpu: aarch64, os: darwin}
+            - {host: 'macos-latest',   cpu: aarch64, os: ios}
+            - {host: 'ubuntu-latest',  cpu: i386,    os: linux}
+            - {host: 'ubuntu-latest',  cpu: x86_64,  os: win64}
         #    - {host: 'ubuntu-latest',  cpu: arm,    os: linux}
         #    - {host: 'windows-latest', cpu: i386,   os: linux}
         #    - {host: 'windows-latest', cpu: x86_64, os: win64}
