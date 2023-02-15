@@ -91,3 +91,12 @@ jobs:
       - name: Compile to another platform
         if: matrix.os != ''
         run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
+
+      - name: Install virtual machine
+        if: matrix.os != ''
+        id: qemu
+        uses: docker/setup-qemu-action@v2
+
+      - name: Show available platforms
+        if: matrix.os != ''
+        uses: echo steps.qemu.outputs.platforms
