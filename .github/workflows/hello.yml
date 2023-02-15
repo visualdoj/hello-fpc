@@ -84,7 +84,9 @@ jobs:
         run: fpc hello.pas
 
       - name: Test
-        if: matrix.os == ''
+        if: |
+            matrix.os == '' ||
+            ((runner.os =' 'Windows') && (matrix.cpu == 'x86_64') && (matrix.win64 == 'win64'))
         shell: bash
         run: "./hello"
 
