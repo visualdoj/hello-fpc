@@ -86,7 +86,7 @@ jobs:
       - name: Test
         if: |
             matrix.os == '' ||
-            ((runner.os =' 'Windows') && (matrix.cpu == 'x86_64') && (matrix.win64 == 'win64'))
+            ((runner.os == 'Windows') && (matrix.cpu == 'x86_64') && (matrix.win64 == 'win64'))
         shell: bash
         run: "./hello"
 
