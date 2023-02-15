@@ -83,16 +83,16 @@ jobs:
         if: matrix.os == ''
         run: fpc hello.pas
 
-      - name: Test
+      - name: Compile to another platform
+        if: matrix.os != ''
+        run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
+
+      - name: Run
         if: |
             matrix.os == '' ||
             runner.os == 'Windows' && matrix.cpu == 'x86_64' && matrix.os == 'win64'
         shell: bash
         run: "./hello"
-
-      - name: Compile to another platform
-        if: matrix.os != ''
-        run: fpc -P${{ matrix.cpu }} -T${{ matrix.os }} hello.pas
 
       - name: Install virtual machine
         if: matrix.os != '' && runner.os == 'Linux'
