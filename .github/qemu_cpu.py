@@ -1,6 +1,6 @@
 import sys
 
-cpu = sys.argv[1]
+cpu = sys.argv[1] if len(sys.argv) > 1 else 'x86_64'
 
 if cpu == 'powerpc':
     cpu = 'ppc'
