@@ -92,13 +92,13 @@ jobs:
             matrix.os == '' ||
             runner.os == 'Windows' && matrix.cpu == 'x86_64' && matrix.os == 'win64'
         shell: bash
-        run: "./hello"
+        run: ./hello
 
       - name: Install virtual machine
-        if: matrix.os != '' && runner.os == 'Linux'
-        id: qemu
-        uses: docker/setup-qemu-action@v2
+        uses: visualdoj/setup-qemu@v1
 
-      - name: Show available platforms
-        if: matrix.os != '' && runner.os == 'Linux'
-        run: echo ${{ steps.qemu.outputs.platforms }}
+      - id: qemu
+        run: echo "cpu=$(python .github/qemu_cpu.py ${{ matrix.cpu }})" >>$GITHUB_OUTPUT
+
+      - name: Print qemu version
+        run: qemu-system-${{ steps.qemu.outputs.cpu }} --version
